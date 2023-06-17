@@ -1,0 +1,140 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Journal App API",
+    "version": "1.0.0",
+    "description": "API documentation for the Journal App"
+  },
+  "basePath": "/api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "JWT authorization token"
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/journals": {
+      "post": {
+        "tags": ["Journals"],
+        "summary": "Create a journal (Teacher access only)",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Journal created successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/journals/{journalId}": {
+      "put": {
+        "tags": ["Journals"],
+        "summary": "Update a journal (Teacher access only)",
+        "parameters": [
+          {
+            "name": "journalId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the journal to update"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Journal updated successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Journals"],
+        "summary": "Delete a journal (Teacher access only)",
+        "parameters": [
+          {
+            "name": "journalId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the journal to delete"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Journal deleted successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/journals/{journalId}/publish": {
+      "put": {
+        "tags": ["Journals"],
+        "summary": "Publish a journal (Teacher access only)",
+        "parameters": [
+          {
+            "name": "journalId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the journal to publish"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Journal published successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/journals/teacher-feed": {
+      "get": {
+        "tags": ["Journals"],
+        "summary": "Get journal feed for a teacher",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved teacher journal feed"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/journals/student-feed": {
+      "get": {
+        "tags": ["Journals"],
+        "summary": "Get journal feed for a student",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved student journal feed"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  }
+}
