@@ -3,6 +3,11 @@ const jwt = require('jsonwebtoken');
 const authenticateJWT = (req, res, next) => {
     const token = req.header('Authorization')?.split(' ')[1];
 
+    // Allow access to Swagger UI without authentication
+    if (req.path === '/api-docs' || req.path.startsWith('/api-docs/')) {
+        return next();
+    }
+
     if (!token) {
         return res.status(401).json({ message: 'Authentication failed: Missing token' });
     }

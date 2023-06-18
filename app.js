@@ -2,6 +2,8 @@ const express = require('express');
 const authenticationRoutes = require('./routes/authenticationRoutes2');
 const journalRoutes = require('./routes/routes');
 const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 
 
 
@@ -16,6 +18,7 @@ app.use(express.json());
 // Add more middleware and routes later
 app.use('/', authenticationRoutes);
 app.use('/', journalRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 // Start the server
