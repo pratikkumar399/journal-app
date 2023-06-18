@@ -68,7 +68,7 @@
           }
         }
       },
-      "": {
+      "/": {
         "post": {
           "tags": [
             "Journals"
@@ -98,6 +98,12 @@
                     "format": "date-time"
                   },
                   "attachment": {
+                    "type": "string"
+                  },
+                  "created_by":{
+                    "type": "string"
+                  },
+                  "created_at":{
                     "type": "string"
                   }
                 }

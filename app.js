@@ -5,9 +5,6 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
 
-
-
-
 const app = express();
 const PORT = 3000; // You can change the port number if desired
 
@@ -17,7 +14,7 @@ app.use(express.json());
 
 // Add more middleware and routes later
 app.use('/', authenticationRoutes);
-app.use('/', journalRoutes);
+app.use('/journal', journalRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 

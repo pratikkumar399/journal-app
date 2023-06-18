@@ -54,6 +54,8 @@ const createJournal = (req, res) => {
         });
 };
 
+
+
 const updateJournal = (req, res) => {
     if (req.user !== 'teacher1') {
         return res.status(401).json({ message: 'Unauthorized' });
