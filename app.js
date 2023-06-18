@@ -1,8 +1,7 @@
 const express = require('express');
 const authenticationRoutes = require('./routes/authenticationRoutes2');
 const journalRoutes = require('./routes/routes');
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+
 
 
 const app = express();
@@ -15,7 +14,10 @@ app.use(express.json());
 // Add more middleware and routes later
 app.use('/', authenticationRoutes);
 app.use('/journal', journalRoutes);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get('/api', (req, res) => {
+    res.redirect('https://documenter.getpostman.com/view/13224907/2s93si1Vc9');
+});
+
 
 
 // Start the server
