@@ -6,9 +6,9 @@ const journalController = require('../controllers/journalController2');
 
 // Define your journal routes
 router.get('/', authenticateJWT, journalController.getJournals);
-router.post('/', authenticateJWT, journalController.createJournal);
-router.put('/:id', authenticateJWT, journalController.updateJournal);
-router.delete('/:id', authenticateJWT, journalController.deleteJournal);
+router.post('/create', authenticateJWT, journalController.createJournal);
+router.put('/update/:id', authenticateJWT, journalController.updateJournal);
+router.delete('/delete/:id', authenticateJWT, journalController.deleteJournal);
 router.put('/:id/publish', authenticateJWT, journalController.publishJournal);
 router.get('/teachers-feed', authenticateJWT, journalController.getTeachersFeed);
 
